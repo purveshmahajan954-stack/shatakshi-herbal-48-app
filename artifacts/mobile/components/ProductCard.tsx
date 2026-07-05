@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { Star, Plus } from "lucide-react-native";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
 import React from "react";
@@ -73,7 +73,7 @@ export function ProductCard({ product }: { product: Product }) {
           </Text>
 
           <View style={styles.ratingRow}>
-            <Ionicons name="star" size={12} color={colors.accent} />
+            <Star size={12} color={colors.accent} />
             <Text style={[styles.ratingText, { color: colors.mutedForeground }]}>
               {product.rating} ({product.reviewCount})
             </Text>
@@ -103,7 +103,7 @@ export function ProductCard({ product }: { product: Product }) {
               hitSlop={8}
               testID={`add-to-cart-${product.id}`}
             >
-              <Ionicons name="add" size={16} color={colors.primaryForeground} />
+              <Plus size={16} color={colors.primaryForeground} />
             </Pressable>
           </View>
         </View>

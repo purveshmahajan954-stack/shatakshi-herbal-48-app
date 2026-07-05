@@ -2,7 +2,7 @@
 // iOS uses _layout.ios.tsx which handles NativeTabs / Liquid Glass / SF Symbols.
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+import { Home, LayoutGrid, ShoppingBag, Phone } from "lucide-react-native";
 import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 
@@ -44,7 +44,7 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="home" size={22} color={color} />
+            <Home size={22} color={color} />
           ),
         }}
       />
@@ -53,7 +53,7 @@ export default function TabLayout() {
         options={{
           title: "Shop",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="grid" size={22} color={color} />
+            <LayoutGrid size={22} color={color} />
           ),
         }}
       />
@@ -63,7 +63,7 @@ export default function TabLayout() {
           title: "Cart",
           tabBarBadge: totalItems > 0 ? totalItems : undefined,
           tabBarIcon: ({ color }) => (
-            <Ionicons name="bag" size={22} color={color} />
+            <ShoppingBag size={22} color={color} />
           ),
         }}
       />
@@ -72,7 +72,7 @@ export default function TabLayout() {
         options={{
           title: "Contact",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="call" size={22} color={color} />
+            <Phone size={22} color={color} />
           ),
         }}
       />

@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { Search, X } from "lucide-react-native";
 import { useLocalSearchParams } from "expo-router";
 import React, { useMemo, useState } from "react";
 import {
@@ -60,7 +60,7 @@ export default function ShopScreen() {
             { backgroundColor: colors.muted, borderColor: colors.border },
           ]}
         >
-          <Ionicons name="search" size={16} color={colors.mutedForeground} />
+          <Search size={16} color={colors.mutedForeground} />
           <TextInput
             value={query}
             onChangeText={setQuery}
@@ -71,7 +71,7 @@ export default function ShopScreen() {
           />
           {query.length > 0 ? (
             <Pressable onPress={() => setQuery("")} hitSlop={8}>
-              <Ionicons name="close" size={16} color={colors.mutedForeground} />
+              <X size={16} color={colors.mutedForeground} />
             </Pressable>
           ) : null}
         </View>
@@ -130,7 +130,7 @@ export default function ShopScreen() {
       ListHeaderComponent={ListHeader}
       ListEmptyComponent={
         <View style={styles.empty}>
-          <Ionicons name="search" size={32} color={colors.mutedForeground} />
+          <Search size={32} color={colors.mutedForeground} />
           <Text style={[styles.emptyText, { color: colors.mutedForeground }]}>
             No products found
           </Text>

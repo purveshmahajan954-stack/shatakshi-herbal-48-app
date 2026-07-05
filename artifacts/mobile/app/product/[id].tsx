@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { ArrowLeft, Star, ShieldCheck, MessageCircle, ShoppingBag } from "lucide-react-native";
 import * as Haptics from "expo-haptics";
 import { Image } from "expo-image";
 import { Stack, useLocalSearchParams, router } from "expo-router";
@@ -66,7 +66,7 @@ export default function ProductDetailScreen() {
             hitSlop={10}
             testID="product-back-button"
           >
-            <Ionicons name="arrow-back" size={20} color="#0B1F14" />
+            <ArrowLeft size={20} color="#0B1F14" />
           </Pressable>
           {product.badge ? (
             <View
@@ -104,7 +104,7 @@ export default function ProductDetailScreen() {
           </Text>
 
           <View style={styles.ratingRow}>
-            <Ionicons name="star" size={14} color={colors.accent} />
+            <Star size={14} color={colors.accent} />
             <Text style={[styles.ratingText, { color: colors.foreground }]}>
               {product.rating}
             </Text>
@@ -149,7 +149,7 @@ export default function ProductDetailScreen() {
               { backgroundColor: colors.secondary },
             ]}
           >
-            <Ionicons name="shield-checkmark" size={16} color={colors.primary} />
+            <ShieldCheck size={16} color={colors.primary} />
             <Text style={[styles.infoText, { color: colors.foreground }]}>
               AYUSH certified · 100% natural ingredients
             </Text>
@@ -172,7 +172,7 @@ export default function ProductDetailScreen() {
           style={[styles.enquireButton, { borderColor: colors.border }]}
           testID="product-enquire-button"
         >
-          <Ionicons name="chatbubble" size={18} color={colors.foreground} />
+          <MessageCircle size={18} color={colors.foreground} />
         </Pressable>
         <Pressable
           onPress={() => {
@@ -182,7 +182,7 @@ export default function ProductDetailScreen() {
           style={[styles.addButton, { backgroundColor: colors.primary }]}
           testID="product-add-to-cart-button"
         >
-          <Ionicons name="bag" size={18} color={colors.primaryForeground} />
+          <ShoppingBag size={18} color={colors.primaryForeground} />
           <Text style={[styles.addButtonText, { color: colors.primaryForeground }]}>
             {inCart ? "Add Another" : "Add to Cart"}
           </Text>

@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { Phone, MessageCircle, Mail, MapPin, ChevronRight, LucideIcon } from "lucide-react-native";
 import { Image } from "expo-image";
 import React from "react";
 import {
@@ -20,16 +20,23 @@ export default function ContactScreen() {
   const insets = useSafeAreaInsets();
   const isWeb = Platform.OS === "web";
 
+  const ACTION_ICONS: Record<string, LucideIcon> = {
+    call: Phone,
+    chatbubble: MessageCircle,
+    mail: Mail,
+    location: MapPin,
+  };
+
   const actions = [
     {
-      icon: "call" as const,
+      icon: "call",
       label: "Call Us",
       value: business.phoneDisplay,
       onPress: () => Linking.openURL(`tel:${business.phone}`),
       testID: "contact-call",
     },
     {
-      icon: "chatbubble" as const,
+      icon: "chatbubble",
       label: "WhatsApp",
       value: "Chat with us",
       onPress: () =>
@@ -41,14 +48,14 @@ export default function ContactScreen() {
       testID: "contact-whatsapp",
     },
     {
-      icon: "mail" as const,
+      icon: "mail",
       label: "Email",
       value: business.email,
       onPress: () => Linking.openURL(`mailto:${business.email}`),
       testID: "contact-email",
     },
     {
-      icon: "location" as const,
+      icon: "location",
       label: "Visit Us",
       value: business.address,
       onPress: () =>
@@ -114,7 +121,7 @@ export default function ContactScreen() {
                 { backgroundColor: colors.secondary },
               ]}
             >
-              <Ionicons name={action.icon} size={18} color={colors.primary} />
+              {(() => { const Icon = ACTION_ICONS[action.icon]; return Icon ? <Icon size={18} color={colors.primary} /> : null; })()}
             </View>
             <View style={styles.actionText}>
               <Text style={[styles.actionLabel, { color: colors.foreground }]}>
@@ -127,7 +134,7 @@ export default function ContactScreen() {
                 {action.value}
               </Text>
             </View>
-            <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+            <ChevronRight size={18} color={colors.mutedForeground} />
           </Pressable>
         ))}
       </View>

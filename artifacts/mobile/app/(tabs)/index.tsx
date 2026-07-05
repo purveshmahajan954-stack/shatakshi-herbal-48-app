@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { Heart, ShoppingBag, Menu, Search, Mic } from "lucide-react-native";
 import { Image } from "expo-image";
 import { Link, useRouter } from "expo-router";
 import React from "react";
@@ -55,7 +55,7 @@ export default function HomeScreen() {
           {/* Right icons */}
           <View style={styles.actions}>
             <Pressable style={styles.iconBtn} hitSlop={8} testID="header-wishlist">
-              <Ionicons name="heart" size={22} color={BRAND_GREEN} />
+              <Heart size={22} color={BRAND_GREEN} />
             </Pressable>
 
             <Pressable
@@ -64,7 +64,7 @@ export default function HomeScreen() {
               hitSlop={8}
               testID="header-cart"
             >
-              <Ionicons name="bag" size={22} color={BRAND_GREEN} />
+              <ShoppingBag size={22} color={BRAND_GREEN} />
               {totalItems > 0 && (
                 <View style={styles.badge}>
                   <Text style={styles.badgeText}>
@@ -75,7 +75,7 @@ export default function HomeScreen() {
             </Pressable>
 
             <Pressable style={styles.iconBtn} hitSlop={8} testID="header-menu">
-              <Ionicons name="menu" size={22} color={BRAND_GREEN} />
+              <Menu size={22} color={BRAND_GREEN} />
             </Pressable>
           </View>
         </View>
@@ -87,10 +87,10 @@ export default function HomeScreen() {
           style={styles.searchBar}
           testID="header-search"
         >
-          <Ionicons name="search" size={18} color="#6B7568" />
+          <Search size={18} color="#6B7568" />
           <Text style={styles.searchPlaceholder}>Search herbal products...</Text>
           <View style={styles.searchDivider} />
-          <Ionicons name="mic" size={16} color="#6B7568" />
+          <Mic size={16} color="#6B7568" />
         </TouchableOpacity>
       </View>
 

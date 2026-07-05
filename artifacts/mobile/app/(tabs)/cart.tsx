@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { ShoppingBag, Trash2, Minus, Plus, MessageCircle } from "lucide-react-native";
 import * as Haptics from "expo-haptics";
 import { Image } from "expo-image";
 import { Link, router } from "expo-router";
@@ -94,7 +94,7 @@ export default function CartScreen() {
 
       {items.length === 0 ? (
         <View style={styles.empty}>
-          <Ionicons name="bag" size={40} color={colors.mutedForeground} />
+          <ShoppingBag size={40} color={colors.mutedForeground} />
           <Text style={[styles.emptyTitle, { color: colors.foreground }]}>
             Your cart is empty
           </Text>
@@ -157,7 +157,7 @@ export default function CartScreen() {
                     hitSlop={8}
                     testID={`remove-${line.productId}`}
                   >
-                    <Ionicons name="trash" size={16} color={colors.destructive} />
+                    <Trash2 size={16} color={colors.destructive} />
                   </Pressable>
                 </View>
                 <View style={styles.itemBottomRow}>
@@ -174,7 +174,7 @@ export default function CartScreen() {
                       hitSlop={6}
                       testID={`decrement-${line.productId}`}
                     >
-                      <Ionicons name="remove" size={14} color={colors.foreground} />
+                      <Minus size={14} color={colors.foreground} />
                     </Pressable>
                     <Text style={[styles.qtyText, { color: colors.foreground }]}>
                       {line.quantity}
@@ -188,7 +188,7 @@ export default function CartScreen() {
                       hitSlop={6}
                       testID={`increment-${line.productId}`}
                     >
-                      <Ionicons name="add" size={14} color={colors.foreground} />
+                      <Plus size={14} color={colors.foreground} />
                     </Pressable>
                   </View>
                 </View>
@@ -219,7 +219,7 @@ export default function CartScreen() {
               style={[styles.orderButton, { backgroundColor: colors.primary }]}
               testID="order-whatsapp-button"
             >
-              <Ionicons name="chatbubble" size={18} color={colors.primaryForeground} />
+              <MessageCircle size={18} color={colors.primaryForeground} />
               <Text
                 style={[styles.orderButtonText, { color: colors.primaryForeground }]}
               >

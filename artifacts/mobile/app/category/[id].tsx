@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { ArrowLeft, Package } from "lucide-react-native";
 import { Stack, useLocalSearchParams, router } from "expo-router";
 import React from "react";
 import {
@@ -39,7 +39,7 @@ export default function CategoryScreen() {
           hitSlop={10}
           testID="category-back-button"
         >
-          <Ionicons name="arrow-back" size={18} color={colors.foreground} />
+          <ArrowLeft size={18} color={colors.foreground} />
         </Pressable>
         <View style={styles.headerText}>
           <Text style={[styles.title, { color: colors.foreground }]}>
@@ -60,7 +60,7 @@ export default function CategoryScreen() {
         scrollEnabled={items.length > 0}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Ionicons name="cube-outline" size={32} color={colors.mutedForeground} />
+            <Package size={32} color={colors.mutedForeground} />
             <Text style={[styles.emptyText, { color: colors.mutedForeground }]}>
               No products in this category yet
             </Text>

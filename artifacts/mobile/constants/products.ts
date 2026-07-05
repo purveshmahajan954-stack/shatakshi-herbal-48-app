@@ -3,7 +3,7 @@ export type Category = {
   name: string;
   shortName: string;
   description: string;
-  icon: keyof typeof import("@expo/vector-icons").Feather.glyphMap;
+  icon: string;
   image: any;
 };
 

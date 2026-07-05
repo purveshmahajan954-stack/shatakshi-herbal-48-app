@@ -202,7 +202,7 @@ export default function CartScreen() {
               {
                 backgroundColor: colors.card,
                 borderTopColor: colors.border,
-                paddingBottom: isWeb ? 34 : insets.bottom + 12,
+                paddingBottom: isWeb ? 84 + 16 : insets.bottom + 12,
               },
             ]}
           >

@@ -722,12 +722,38 @@ export const products: Product[] = [
     tagline: "28 Tablets",
     description:
       "Sakhi Sundari offers natural beauty and wellness support for women, combining shatavari, ashoka and lodhra to balance hormones, enhance skin radiance and boost everyday vitality.",
-    price: 249,
-    mrp: 300,
+    price: 340,
+    mrp: 410,
     rating: 4.6,
     reviewCount: 145,
     badge: "New",
-    image: { uri: "https://shatakshiherbal.com/product-images/product-25_new.webp" },
+    image: { uri: "https://shatakshiherbal.com/assets/product-53-B_J58su8.webp" },
+  },
+  {
+    id: "shat-prabha-tab",
+    name: "Shat Prabha Tab",
+    categoryId: "stree-care",
+    tagline: "Herbal Tablets",
+    description:
+      "Shat Prabha Tab is rich in Vitamin C and powerful herbal extracts that boost immunity, strengthen hair roots and support women's overall health and radiance.",
+    price: 799,
+    mrp: 960,
+    rating: 4.8,
+    reviewCount: 345,
+    image: { uri: "https://shatakshiherbal.com/assets/product-52-NsUojCm1.webp" },
+  },
+  {
+    id: "femina-careers-tablets",
+    name: "Femina Careers tablets",
+    categoryId: "stree-care",
+    tagline: "Herbal Tablets",
+    description:
+      "Femina Careers Tablets are a specialized women's wellness formula that helps regulate blood sugar levels naturally while supporting hormonal balance and reproductive health.",
+    price: 1000,
+    mrp: 1200,
+    rating: 4.6,
+    reviewCount: 189,
+    image: { uri: "https://shatakshiherbal.com/assets/product-53-B_J58su8.webp" },
   },
 ];
 

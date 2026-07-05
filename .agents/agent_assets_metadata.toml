@@ -1,0 +1,50 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "loTXFQUInXRgGahJGCfGW"
+uri = "file://artifacts/mobile/assets/images/icon.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "7aJoqVEX4bS7-GFYzKoPR"
+uri = "file://artifacts/mobile/assets/images/hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "LDa6V8FL1yQBCiGaPsuEU"
+uri = "file://artifacts/mobile/assets/images/cat-diabetes.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "XeoycgaoRCs4CiKb7Xy0Y"
+uri = "file://artifacts/mobile/assets/images/cat-arthritis.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "H_kZwOKFdZMTyAYDHZ-0s"
+uri = "file://artifacts/mobile/assets/images/cat-liver.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "gJL302ewOsoTh11RH_uRl"
+uri = "file://artifacts/mobile/assets/images/cat-asthma.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "ILN0w6PoTz8UNxb7MJ2yU"
+uri = "file://artifacts/mobile/assets/images/cat-skin.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "oN3tYqcOBLdTrmihX2STU"
+uri = "file://artifacts/mobile/assets/images/cat-wellness.png"
+type = "image"
+title = "generated_image"

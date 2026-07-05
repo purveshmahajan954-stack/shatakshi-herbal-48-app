@@ -1,0 +1,1 @@
+- [Expo Router Link+Pressable web crash](expo-router-link-pressable-web-crash.md) — `Link asChild` wrapping a `Pressable` with a static array style + dynamic color can crash react-native-web with a CSSStyleDeclaration error; isolate by bisecting, fix by swapping to plain `Pressable` + `router.push`.

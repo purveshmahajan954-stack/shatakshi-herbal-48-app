@@ -1,36 +1,42 @@
 /**
  * Semantic design tokens for the Shatakshi Herbal mobile app.
- * Palette derived from the brand's website: deep Ayurvedic green + warm gold.
+ * Palette: warm cream background · dark slate headings · gold accent.
  */
 
 const colors = {
   light: {
-    text: "#0B1F14",
+    text: "#1F2937",
     tint: "#07502C",
 
-    background: "#FBF8F2",
-    foreground: "#0B1F14",
+    // Backgrounds
+    background: "#F8F6F2",   // Cream
+    foreground: "#1F2937",   // Dark slate — headings & primary text
 
-    card: "#FFFFFF",
-    cardForeground: "#0B1F14",
+    // Cards / sidebar panels
+    card: "#EFE9DD",         // Halka cream
+    cardForeground: "#1F2937",
 
+    // Brand green (kept for logo, badges, nav active state)
     primary: "#07502C",
     primaryForeground: "#FFFFFF",
 
-    secondary: "#FBF4E8",
-    secondaryForeground: "#07502C",
+    // Muted / secondary surfaces
+    secondary: "#EFE9DD",
+    secondaryForeground: "#1F2937",
 
-    muted: "#F1EDE3",
-    mutedForeground: "#6B7568",
+    muted: "#EFE9DD",
+    mutedForeground: "#4B5563",  // Soft grey — body text
 
-    accent: "#EFA831",
-    accentForeground: "#3A2600",
+    // Gold accent — section underlines, bullet points, links, highlights
+    accent: "#C89B3C",
+    accentForeground: "#FFFFFF",
 
     destructive: "#C0392B",
     destructiveForeground: "#FFFFFF",
 
-    border: "#E7E1D3",
-    input: "#E7E1D3",
+    // Dividers & inputs
+    border: "#D6CFC2",
+    input: "#D6CFC2",
   },
 
   radius: 16,

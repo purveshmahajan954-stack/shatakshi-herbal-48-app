@@ -1,3 +1,4 @@
+import { Feather } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { Link, useRouter } from "expo-router";
 import React from "react";
@@ -19,7 +20,10 @@ import {
   categories,
   getFeaturedProducts,
 } from "@/constants/products";
+import { useCart } from "@/contexts/CartContext";
 import { useColors } from "@/hooks/useColors";
+
+const HEADER_HEIGHT = 56;
 
 export default function HomeScreen() {
   const colors = useColors();
@@ -27,134 +31,291 @@ export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const featured = getFeaturedProducts();
   const isWeb = Platform.OS === "web";
+  const { totalItems } = useCart();
+
+  const topInset = isWeb ? 0 : insets.top;
+  const headerTotal = topInset + HEADER_HEIGHT;
 
   return (
-    <ScrollView
-      style={{ backgroundColor: colors.background }}
-      contentContainerStyle={{
-        paddingTop: isWeb ? 67 : insets.top,
-        paddingBottom: isWeb ? 34 : 24,
-      }}
-      showsVerticalScrollIndicator={false}
-    >
-      <View style={styles.hero}>
-        <Image
-          source={require("../../assets/images/hero.png")}
-          style={StyleSheet.absoluteFillObject}
-          contentFit="cover"
-        />
-        <View style={styles.heroOverlay} />
-        <View style={styles.heroContent}>
-          <View
-            style={[
-              styles.pill,
-              { backgroundColor: "rgba(255,255,255,0.18)" },
-            ]}
-          >
-            <Text style={styles.pillText}>AYUSH CERTIFIED · 100% NATURAL</Text>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
+      {/* ── Fixed Header ── */}
+      <View
+        style={[
+          styles.header,
+          {
+            paddingTop: topInset,
+            height: headerTotal,
+            backgroundColor: colors.background,
+            borderBottomColor: colors.border,
+          },
+        ]}
+      >
+        {/* Logo */}
+        <View style={styles.logoWrap}>
+          <View style={styles.logoLeaf}>
+            <Text style={styles.leafEmoji}>🌿</Text>
           </View>
-          <Text style={styles.heroTitle}>
-            Pure Herbal Healing for Modern Life
-          </Text>
-          <Text style={styles.heroSubtitle}>
-            Ancient Ayurvedic wisdom, reimagined for today.
-          </Text>
+          <View>
+            <Text style={[styles.logoTop, { color: colors.primary }]}>
+              SHATAKSHI
+            </Text>
+            <Text style={[styles.logoBottom, { color: colors.primary }]}>
+              HERBAL
+            </Text>
+          </View>
+        </View>
+
+        {/* Action icons */}
+        <View style={styles.actions}>
           <Pressable
             onPress={() => router.push("/shop")}
-            style={[styles.heroButton, { backgroundColor: colors.accent }]}
-            testID="hero-shop-now"
+            style={styles.iconBtn}
+            hitSlop={8}
+            testID="header-search"
           >
-            <Text
+            <Feather name="search" size={22} color={colors.foreground} />
+          </Pressable>
+
+          <Pressable
+            style={styles.iconBtn}
+            hitSlop={8}
+            testID="header-wishlist"
+          >
+            <Feather name="heart" size={22} color={colors.foreground} />
+          </Pressable>
+
+          <Pressable
+            onPress={() => router.push("/cart")}
+            style={styles.iconBtn}
+            hitSlop={8}
+            testID="header-cart"
+          >
+            <Feather name="shopping-bag" size={22} color={colors.foreground} />
+            {totalItems > 0 && (
+              <View
+                style={[
+                  styles.badge,
+                  { backgroundColor: colors.primary },
+                ]}
+              >
+                <Text style={styles.badgeText}>
+                  {totalItems > 9 ? "9+" : String(totalItems)}
+                </Text>
+              </View>
+            )}
+          </Pressable>
+
+          <Pressable
+            style={styles.iconBtn}
+            hitSlop={8}
+            testID="header-menu"
+          >
+            <Feather name="menu" size={22} color={colors.foreground} />
+          </Pressable>
+        </View>
+      </View>
+
+      {/* ── Scrollable content ── */}
+      <ScrollView
+        style={{ flex: 1, backgroundColor: colors.background }}
+        contentContainerStyle={{ paddingBottom: isWeb ? 34 : 24 }}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Hero */}
+        <View style={styles.hero}>
+          <Image
+            source={require("../../assets/images/hero.png")}
+            style={StyleSheet.absoluteFillObject}
+            contentFit="cover"
+          />
+          <View style={styles.heroOverlay} />
+          <View style={styles.heroContent}>
+            <View
               style={[
-                styles.heroButtonText,
-                { color: colors.accentForeground },
+                styles.pill,
+                { backgroundColor: "rgba(255,255,255,0.18)" },
               ]}
             >
-              Shop Now  →
+              <Text style={styles.pillText}>AYUSH CERTIFIED · 100% NATURAL</Text>
+            </View>
+            <Text style={styles.heroTitle}>
+              Pure Herbal Healing for Modern Life
             </Text>
-          </Pressable>
-        </View>
-      </View>
-
-      <View style={styles.statsRow}>
-        <View style={styles.stat}>
-          <Text style={[styles.statValue, { color: colors.foreground }]}>
-            {business.rating}
-          </Text>
-          <Text style={[styles.statLabel, { color: colors.mutedForeground }]}>
-            Rating
-          </Text>
-        </View>
-        <View style={[styles.statDivider, { backgroundColor: colors.border }]} />
-        <View style={styles.stat}>
-          <Text style={[styles.statValue, { color: colors.foreground }]}>
-            {business.customerCount}
-          </Text>
-          <Text style={[styles.statLabel, { color: colors.mutedForeground }]}>
-            Customers
-          </Text>
-        </View>
-        <View style={[styles.statDivider, { backgroundColor: colors.border }]} />
-        <View style={styles.stat}>
-          <Text style={[styles.statValue, { color: colors.foreground }]}>
-            50+
-          </Text>
-          <Text style={[styles.statLabel, { color: colors.mutedForeground }]}>
-            Products
-          </Text>
-        </View>
-      </View>
-
-      <View style={styles.sectionHeader}>
-        <Text style={[styles.sectionTitle, { color: colors.foreground }]}>
-          Shop by Category
-        </Text>
-        <Link href="/shop" asChild>
-          <Pressable testID="see-all-categories">
-            <Text style={[styles.seeAll, { color: colors.primary }]}>
-              See all
+            <Text style={styles.heroSubtitle}>
+              Ancient Ayurvedic wisdom, reimagined for today.
             </Text>
-          </Pressable>
-        </Link>
-      </View>
-      <FlatList
-        data={categories}
-        horizontal
-        keyExtractor={(item) => item.id}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.categoryList}
-        renderItem={({ item }) => <CategoryCard category={item} />}
-      />
-
-      <View style={styles.sectionHeader}>
-        <Text style={[styles.sectionTitle, { color: colors.foreground }]}>
-          Featured Products
-        </Text>
-        <Link href="/shop" asChild>
-          <Pressable testID="see-all-products">
-            <Text style={[styles.seeAll, { color: colors.primary }]}>
-              See all
-            </Text>
-          </Pressable>
-        </Link>
-      </View>
-      <View style={styles.productGrid}>
-        {featured.map((product) => (
-          <View key={product.id} style={styles.productGridItem}>
-            <ProductCard product={product} />
+            <Pressable
+              onPress={() => router.push("/shop")}
+              style={[styles.heroButton, { backgroundColor: colors.accent }]}
+              testID="hero-shop-now"
+            >
+              <Text
+                style={[
+                  styles.heroButtonText,
+                  { color: colors.accentForeground },
+                ]}
+              >
+                Shop Now  →
+              </Text>
+            </Pressable>
           </View>
-        ))}
-      </View>
-    </ScrollView>
+        </View>
+
+        {/* Stats */}
+        <View style={styles.statsRow}>
+          <View style={styles.stat}>
+            <Text style={[styles.statValue, { color: colors.foreground }]}>
+              {business.rating}
+            </Text>
+            <Text style={[styles.statLabel, { color: colors.mutedForeground }]}>
+              Rating
+            </Text>
+          </View>
+          <View
+            style={[styles.statDivider, { backgroundColor: colors.border }]}
+          />
+          <View style={styles.stat}>
+            <Text style={[styles.statValue, { color: colors.foreground }]}>
+              {business.customerCount}
+            </Text>
+            <Text style={[styles.statLabel, { color: colors.mutedForeground }]}>
+              Customers
+            </Text>
+          </View>
+          <View
+            style={[styles.statDivider, { backgroundColor: colors.border }]}
+          />
+          <View style={styles.stat}>
+            <Text style={[styles.statValue, { color: colors.foreground }]}>
+              50+
+            </Text>
+            <Text style={[styles.statLabel, { color: colors.mutedForeground }]}>
+              Products
+            </Text>
+          </View>
+        </View>
+
+        {/* Shop by Category */}
+        <View style={styles.sectionHeader}>
+          <Text style={[styles.sectionTitle, { color: colors.foreground }]}>
+            Shop by Category
+          </Text>
+          <Link href="/shop" asChild>
+            <Pressable testID="see-all-categories">
+              <Text style={[styles.seeAll, { color: colors.primary }]}>
+                See all
+              </Text>
+            </Pressable>
+          </Link>
+        </View>
+        <FlatList
+          data={categories}
+          horizontal
+          keyExtractor={(item) => item.id}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.categoryList}
+          scrollEnabled
+          renderItem={({ item }) => <CategoryCard category={item} />}
+        />
+
+        {/* Featured Products */}
+        <View style={styles.sectionHeader}>
+          <Text style={[styles.sectionTitle, { color: colors.foreground }]}>
+            Featured Products
+          </Text>
+          <Link href="/shop" asChild>
+            <Pressable testID="see-all-products">
+              <Text style={[styles.seeAll, { color: colors.primary }]}>
+                See all
+              </Text>
+            </Pressable>
+          </Link>
+        </View>
+        <View style={styles.productGrid}>
+          {featured.map((product) => (
+            <View key={product.id} style={styles.productGridItem}>
+              <ProductCard product={product} />
+            </View>
+          ))}
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  // ── Header ──────────────────────────────────────────────────────────────
+  header: {
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingBottom: 10,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    zIndex: 10,
+  },
+  logoWrap: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+  },
+  logoLeaf: {
+    width: 36,
+    height: 36,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  leafEmoji: {
+    fontSize: 26,
+  },
+  logoTop: {
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 1.2,
+    lineHeight: 13,
+  },
+  logoBottom: {
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 1.2,
+    lineHeight: 13,
+  },
+  actions: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+  },
+  iconBtn: {
+    width: 38,
+    height: 38,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "relative",
+  },
+  badge: {
+    position: "absolute",
+    top: 4,
+    right: 2,
+    minWidth: 16,
+    height: 16,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 3,
+  },
+  badgeText: {
+    color: "#FFFFFF",
+    fontSize: 9,
+    fontWeight: "700",
+  },
+
+  // ── Hero ─────────────────────────────────────────────────────────────────
   hero: {
-    height: 380,
+    width: "100%",
+    aspectRatio: 0.95,
     justifyContent: "flex-end",
     overflow: "hidden",
-    position: "relative",
   },
   heroOverlay: {
     ...StyleSheet.absoluteFillObject,
@@ -203,6 +364,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "700",
   },
+
+  // ── Stats ─────────────────────────────────────────────────────────────────
   statsRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -224,6 +387,8 @@ const styles = StyleSheet.create({
     width: StyleSheet.hairlineWidth,
     height: 32,
   },
+
+  // ── Sections ──────────────────────────────────────────────────────────────
   sectionHeader: {
     flexDirection: "row",
     alignItems: "center",

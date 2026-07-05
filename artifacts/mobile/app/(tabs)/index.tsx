@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { Link, useRouter } from "expo-router";
 import React from "react";
@@ -55,7 +55,7 @@ export default function HomeScreen() {
           {/* Right icons */}
           <View style={styles.actions}>
             <Pressable style={styles.iconBtn} hitSlop={8} testID="header-wishlist">
-              <Feather name="heart" size={22} color={BRAND_GREEN} />
+              <Ionicons name="heart" size={22} color={BRAND_GREEN} />
             </Pressable>
 
             <Pressable
@@ -64,7 +64,7 @@ export default function HomeScreen() {
               hitSlop={8}
               testID="header-cart"
             >
-              <Feather name="shopping-bag" size={22} color={BRAND_GREEN} />
+              <Ionicons name="bag" size={22} color={BRAND_GREEN} />
               {totalItems > 0 && (
                 <View style={styles.badge}>
                   <Text style={styles.badgeText}>
@@ -75,7 +75,7 @@ export default function HomeScreen() {
             </Pressable>
 
             <Pressable style={styles.iconBtn} hitSlop={8} testID="header-menu">
-              <Feather name="menu" size={22} color={BRAND_GREEN} />
+              <Ionicons name="menu" size={22} color={BRAND_GREEN} />
             </Pressable>
           </View>
         </View>
@@ -87,10 +87,10 @@ export default function HomeScreen() {
           style={styles.searchBar}
           testID="header-search"
         >
-          <Feather name="search" size={18} color="#6B7568" />
+          <Ionicons name="search" size={18} color="#6B7568" />
           <Text style={styles.searchPlaceholder}>Search herbal products...</Text>
           <View style={styles.searchDivider} />
-          <Feather name="mic" size={16} color="#6B7568" />
+          <Ionicons name="mic" size={16} color="#6B7568" />
         </TouchableOpacity>
       </View>
 

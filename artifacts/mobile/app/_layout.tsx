@@ -51,10 +51,6 @@ export default function RootLayout() {
     Inter_500Medium,
     Inter_600SemiBold,
     Inter_700Bold,
-    // @expo/vector-icons v15 uses lowercase family name 'feather'.
-    // Load from local assets so Metro can always resolve it reliably.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    feather: require("../assets/fonts/Feather.ttf"),
   });
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { Stack, useLocalSearchParams, router } from "expo-router";
 import React from "react";
 import {
@@ -39,7 +39,7 @@ export default function CategoryScreen() {
           hitSlop={10}
           testID="category-back-button"
         >
-          <Feather name="arrow-left" size={18} color={colors.foreground} />
+          <Ionicons name="arrow-back" size={18} color={colors.foreground} />
         </Pressable>
         <View style={styles.headerText}>
           <Text style={[styles.title, { color: colors.foreground }]}>
@@ -60,7 +60,7 @@ export default function CategoryScreen() {
         scrollEnabled={items.length > 0}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Feather name="package" size={32} color={colors.mutedForeground} />
+            <Ionicons name="cube-outline" size={32} color={colors.mutedForeground} />
             <Text style={[styles.emptyText, { color: colors.mutedForeground }]}>
               No products in this category yet
             </Text>

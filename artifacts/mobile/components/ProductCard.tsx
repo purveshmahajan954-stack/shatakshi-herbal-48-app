@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
 import React from "react";
@@ -73,7 +73,7 @@ export function ProductCard({ product }: { product: Product }) {
           </Text>
 
           <View style={styles.ratingRow}>
-            <Feather name="star" size={12} color={colors.accent} />
+            <Ionicons name="star" size={12} color={colors.accent} />
             <Text style={[styles.ratingText, { color: colors.mutedForeground }]}>
               {product.rating} ({product.reviewCount})
             </Text>
@@ -103,7 +103,7 @@ export function ProductCard({ product }: { product: Product }) {
               hitSlop={8}
               testID={`add-to-cart-${product.id}`}
             >
-              <Feather name="plus" size={16} color={colors.primaryForeground} />
+              <Ionicons name="add" size={16} color={colors.primaryForeground} />
             </Pressable>
           </View>
         </View>

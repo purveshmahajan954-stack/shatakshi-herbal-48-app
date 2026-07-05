@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router";
 import React, { useMemo, useState } from "react";
 import {
@@ -60,7 +60,7 @@ export default function ShopScreen() {
             { backgroundColor: colors.muted, borderColor: colors.border },
           ]}
         >
-          <Feather name="search" size={16} color={colors.mutedForeground} />
+          <Ionicons name="search" size={16} color={colors.mutedForeground} />
           <TextInput
             value={query}
             onChangeText={setQuery}
@@ -71,7 +71,7 @@ export default function ShopScreen() {
           />
           {query.length > 0 ? (
             <Pressable onPress={() => setQuery("")} hitSlop={8}>
-              <Feather name="x" size={16} color={colors.mutedForeground} />
+              <Ionicons name="close" size={16} color={colors.mutedForeground} />
             </Pressable>
           ) : null}
         </View>
@@ -130,7 +130,7 @@ export default function ShopScreen() {
       ListHeaderComponent={ListHeader}
       ListEmptyComponent={
         <View style={styles.empty}>
-          <Feather name="search" size={32} color={colors.mutedForeground} />
+          <Ionicons name="search" size={32} color={colors.mutedForeground} />
           <Text style={[styles.emptyText, { color: colors.mutedForeground }]}>
             No products found
           </Text>

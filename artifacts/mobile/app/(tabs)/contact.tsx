@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React from "react";
 import {
@@ -22,14 +22,14 @@ export default function ContactScreen() {
 
   const actions = [
     {
-      icon: "phone" as const,
+      icon: "call" as const,
       label: "Call Us",
       value: business.phoneDisplay,
       onPress: () => Linking.openURL(`tel:${business.phone}`),
       testID: "contact-call",
     },
     {
-      icon: "message-circle" as const,
+      icon: "chatbubble" as const,
       label: "WhatsApp",
       value: "Chat with us",
       onPress: () =>
@@ -48,7 +48,7 @@ export default function ContactScreen() {
       testID: "contact-email",
     },
     {
-      icon: "map-pin" as const,
+      icon: "location" as const,
       label: "Visit Us",
       value: business.address,
       onPress: () =>
@@ -114,7 +114,7 @@ export default function ContactScreen() {
                 { backgroundColor: colors.secondary },
               ]}
             >
-              <Feather name={action.icon} size={18} color={colors.primary} />
+              <Ionicons name={action.icon} size={18} color={colors.primary} />
             </View>
             <View style={styles.actionText}>
               <Text style={[styles.actionLabel, { color: colors.foreground }]}>
@@ -127,7 +127,7 @@ export default function ContactScreen() {
                 {action.value}
               </Text>
             </View>
-            <Feather name="chevron-right" size={18} color={colors.mutedForeground} />
+            <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
           </Pressable>
         ))}
       </View>

@@ -1,4 +1,4 @@
-import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import { Image } from "expo-image";
 import { Link, router } from "expo-router";
@@ -94,7 +94,7 @@ export default function CartScreen() {
 
       {items.length === 0 ? (
         <View style={styles.empty}>
-          <Feather name="shopping-bag" size={40} color={colors.mutedForeground} />
+          <Ionicons name="bag" size={40} color={colors.mutedForeground} />
           <Text style={[styles.emptyTitle, { color: colors.foreground }]}>
             Your cart is empty
           </Text>
@@ -157,7 +157,7 @@ export default function CartScreen() {
                     hitSlop={8}
                     testID={`remove-${line.productId}`}
                   >
-                    <Feather name="trash-2" size={16} color={colors.destructive} />
+                    <Ionicons name="trash" size={16} color={colors.destructive} />
                   </Pressable>
                 </View>
                 <View style={styles.itemBottomRow}>
@@ -174,7 +174,7 @@ export default function CartScreen() {
                       hitSlop={6}
                       testID={`decrement-${line.productId}`}
                     >
-                      <Feather name="minus" size={14} color={colors.foreground} />
+                      <Ionicons name="remove" size={14} color={colors.foreground} />
                     </Pressable>
                     <Text style={[styles.qtyText, { color: colors.foreground }]}>
                       {line.quantity}
@@ -188,7 +188,7 @@ export default function CartScreen() {
                       hitSlop={6}
                       testID={`increment-${line.productId}`}
                     >
-                      <Feather name="plus" size={14} color={colors.foreground} />
+                      <Ionicons name="add" size={14} color={colors.foreground} />
                     </Pressable>
                   </View>
                 </View>
@@ -219,7 +219,7 @@ export default function CartScreen() {
               style={[styles.orderButton, { backgroundColor: colors.primary }]}
               testID="order-whatsapp-button"
             >
-              <Feather name="message-circle" size={18} color={colors.primaryForeground} />
+              <Ionicons name="chatbubble" size={18} color={colors.primaryForeground} />
               <Text
                 style={[styles.orderButtonText, { color: colors.primaryForeground }]}
               >

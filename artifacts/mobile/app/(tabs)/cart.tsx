@@ -127,66 +127,71 @@ export default function CartScreen() {
                   { backgroundColor: colors.card, borderColor: colors.border },
                 ]}
               >
-                <Link href={`/product/${product!.id}`} asChild>
-                  <Pressable>
-                    <Image
-                      source={product!.image}
-                      style={styles.itemImage}
-                      contentFit="cover"
-                    />
+                <View style={styles.itemTopRow}>
+                  <Link href={`/product/${product!.id}`} asChild>
+                    <Pressable>
+                      <Image
+                        source={product!.image}
+                        style={styles.itemImage}
+                        contentFit="cover"
+                      />
+                    </Pressable>
+                  </Link>
+                  <View style={styles.itemInfo}>
+                    <Text
+                      style={[styles.itemName, { color: colors.foreground }]}
+                      numberOfLines={2}
+                    >
+                      {product!.name}
+                    </Text>
+                    <Text
+                      style={[styles.itemTagline, { color: colors.mutedForeground }]}
+                      numberOfLines={1}
+                    >
+                      {product!.tagline}
+                    </Text>
+                  </View>
+                  <Pressable
+                    onPress={() => removeFromCart(line.productId)}
+                    style={styles.removeButton}
+                    hitSlop={8}
+                    testID={`remove-${line.productId}`}
+                  >
+                    <Feather name="trash-2" size={16} color={colors.destructive} />
                   </Pressable>
-                </Link>
-                <View style={styles.itemInfo}>
-                  <Text
-                    style={[styles.itemName, { color: colors.foreground }]}
-                    numberOfLines={2}
-                  >
-                    {product!.name}
-                  </Text>
-                  <Text
-                    style={[styles.itemTagline, { color: colors.mutedForeground }]}
-                  >
-                    {product!.tagline}
-                  </Text>
+                </View>
+                <View style={styles.itemBottomRow}>
                   <Text style={[styles.itemPrice, { color: colors.foreground }]}>
                     ₹{product!.price * line.quantity}
                   </Text>
+                  <View style={styles.qtyControls}>
+                    <Pressable
+                      onPress={() => {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        setQuantity(line.productId, line.quantity - 1);
+                      }}
+                      style={[styles.qtyButton, { borderColor: colors.border }]}
+                      hitSlop={6}
+                      testID={`decrement-${line.productId}`}
+                    >
+                      <Feather name="minus" size={14} color={colors.foreground} />
+                    </Pressable>
+                    <Text style={[styles.qtyText, { color: colors.foreground }]}>
+                      {line.quantity}
+                    </Text>
+                    <Pressable
+                      onPress={() => {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        setQuantity(line.productId, line.quantity + 1);
+                      }}
+                      style={[styles.qtyButton, { borderColor: colors.border }]}
+                      hitSlop={6}
+                      testID={`increment-${line.productId}`}
+                    >
+                      <Feather name="plus" size={14} color={colors.foreground} />
+                    </Pressable>
+                  </View>
                 </View>
-                <View style={styles.qtyControls}>
-                  <Pressable
-                    onPress={() => {
-                      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                      setQuantity(line.productId, line.quantity - 1);
-                    }}
-                    style={[styles.qtyButton, { borderColor: colors.border }]}
-                    hitSlop={6}
-                    testID={`decrement-${line.productId}`}
-                  >
-                    <Feather name="minus" size={14} color={colors.foreground} />
-                  </Pressable>
-                  <Text style={[styles.qtyText, { color: colors.foreground }]}>
-                    {line.quantity}
-                  </Text>
-                  <Pressable
-                    onPress={() => {
-                      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                      setQuantity(line.productId, line.quantity + 1);
-                    }}
-                    style={[styles.qtyButton, { borderColor: colors.border }]}
-                    hitSlop={6}
-                    testID={`increment-${line.productId}`}
-                  >
-                    <Feather name="plus" size={14} color={colors.foreground} />
-                  </Pressable>
-                </View>
-                <Pressable
-                  onPress={() => removeFromCart(line.productId)}
-                  style={styles.removeButton}
-                  hitSlop={8}
-                  testID={`remove-${line.productId}`}
-                >
-                  <Feather name="trash-2" size={16} color={colors.destructive} />
-                </Pressable>
               </View>
             ))}
           </ScrollView>
@@ -278,52 +283,61 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   cartItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-    padding: 10,
+    gap: 10,
+    padding: 12,
     borderRadius: 16,
     borderWidth: StyleSheet.hairlineWidth,
   },
+  itemTopRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
   itemImage: {
-    width: 60,
-    height: 60,
+    width: 56,
+    height: 56,
     borderRadius: 12,
   },
   itemInfo: {
     flex: 1,
     gap: 2,
+    minWidth: 0,
   },
   itemName: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "600",
-    lineHeight: 17,
+    lineHeight: 18,
   },
   itemTagline: {
-    fontSize: 11,
+    fontSize: 12,
+  },
+  itemBottomRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingLeft: 68,
   },
   itemPrice: {
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: "700",
-    marginTop: 2,
   },
   qtyControls: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: 10,
   },
   qtyButton: {
-    width: 26,
-    height: 26,
-    borderRadius: 13,
+    width: 28,
+    height: 28,
+    borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
     alignItems: "center",
     justifyContent: "center",
   },
   qtyText: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "600",
-    minWidth: 16,
+    minWidth: 18,
     textAlign: "center",
   },
   removeButton: {

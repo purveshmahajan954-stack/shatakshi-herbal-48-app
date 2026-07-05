@@ -105,7 +105,8 @@ export const categories: Category[] = [
 ];
 
 export const products: Product[] = [
-  // ── Diabetes, Thyroid, BP & Cholesterol Care ──────────────────────────────
+
+  // ── Diabetes, Thyroid, BP & Cholesterol Care (8) ─────────────────────────
   {
     id: "th-z-capsules",
     name: "TH-Z Capsules 28 Caps",
@@ -114,7 +115,7 @@ export const products: Product[] = [
     description:
       "TH-Z Capsules revitalize the body and support healthy thyroid function. A carefully balanced Ayurvedic formulation crafted to help regulate metabolism and restore natural energy levels.",
     price: 499,
-    mrp: 600,
+    mrp: 599,
     rating: 4.7,
     reviewCount: 276,
     badge: "Bestseller",
@@ -128,7 +129,7 @@ export const products: Product[] = [
     description:
       "Active Risup supports healthy liver function and natural detoxification, formulated with bhumi amla and kutki to help the body cleanse and recover from daily toxin exposure.",
     price: 340,
-    mrp: 410,
+    mrp: 399,
     rating: 4.7,
     reviewCount: 184,
     badge: "New",
@@ -140,7 +141,7 @@ export const products: Product[] = [
     categoryId: "diabetes-care",
     tagline: "30 Tablets",
     description:
-      "BP Tablets strengthen immunity and help maintain healthy blood pressure with powerful herbal extracts, formulated with traditional Ayurvedic herbs trusted for generations.",
+      "BP Tablets strengthen immunity and help maintain healthy blood pressure with a powerful blend of herbal extracts, formulated using traditional Ayurvedic wisdom trusted for generations.",
     price: 230,
     mrp: 280,
     rating: 4.8,
@@ -183,7 +184,7 @@ export const products: Product[] = [
     description:
       "Active Green XT is an advanced green herbal capsule formula that supports healthy glucose metabolism and thyroid function, crafted from nature's finest botanical extracts.",
     price: 159,
-    mrp: 190,
+    mrp: 199,
     rating: 4.9,
     reviewCount: 612,
     image: { uri: "https://shatakshiherbal.com/product-images/product-7_new.webp" },
@@ -215,7 +216,7 @@ export const products: Product[] = [
     image: { uri: "https://shatakshiherbal.com/product-images/product-3_new.webp" },
   },
 
-  // ── Arthritis & Joint Pain Care ───────────────────────────────────────────
+  // ── Arthritis & Joint Pain Care (11) ─────────────────────────────────────
   {
     id: "dr-sona-vatplus-capsule",
     name: "Dr SonaVatplus Capsule 28 Caps",
@@ -224,7 +225,7 @@ export const products: Product[] = [
     description:
       "Formulated for Vata-dominant body types, this blend of ashwagandha and brahmi supports grounding, warmth and steady energy while easing joint stiffness through the day.",
     price: 340,
-    mrp: 410,
+    mrp: 399,
     rating: 4.6,
     reviewCount: 178,
     image: { uri: "https://shatakshiherbal.com/product-images/product-15_new.webp" },
@@ -237,7 +238,7 @@ export const products: Product[] = [
     description:
       "Camro P Capsule is a powerful herbal formula targeting joint pain and muscle inflammation, made with shallaki and nirgundi extracts to restore comfort and mobility.",
     price: 340,
-    mrp: 410,
+    mrp: 399,
     rating: 4.8,
     reviewCount: 267,
     badge: "Bestseller",
@@ -251,7 +252,7 @@ export const products: Product[] = [
     description:
       "Aaram Oil is a warming herbal massage oil infused with mahanarayan and nirgundi extracts to soothe sore joints and tired muscles after a long, active day.",
     price: 199,
-    mrp: 240,
+    mrp: 249,
     rating: 4.7,
     reviewCount: 289,
     image: { uri: "https://i.ibb.co/0y7YZmZ2/0ebb1797590b.png" },
@@ -262,7 +263,7 @@ export const products: Product[] = [
     categoryId: "arthritis-care",
     tagline: "14gm Herbal Preparation",
     description:
-      "Vatmaniras is a concentrated traditional Ayurvedic preparation specifically formulated to pacify aggravated Vata, providing deep relief from chronic joint pain and stiffness.",
+      "Vatmaniras is a concentrated traditional Ayurvedic preparation formulated to pacify aggravated Vata, providing deep relief from chronic joint pain and stiffness.",
     price: 1000,
     mrp: 1200,
     rating: 4.5,
@@ -280,7 +281,7 @@ export const products: Product[] = [
     mrp: 210,
     rating: 4.9,
     reviewCount: 345,
-    image: { uri: "https://shatakshiherbal.com/product-images/product-2_new.webp" },
+    image: { uri: "https://i.ibb.co/p9TwR5P/37aa4fcfa5af.png" },
   },
   {
     id: "vedantak-powder",
@@ -293,23 +294,23 @@ export const products: Product[] = [
     mrp: 540,
     rating: 4.7,
     reviewCount: 423,
-    image: { uri: "https://shatakshiherbal.com/product-images/product-1_new.webp" },
+    image: { uri: "https://i.ibb.co/VY4BgQ0g/11416acc8be2.png" },
   },
   {
-    id: "artho-z-capsule",
+    id: "artho-z",
     name: "Artho Z Capsule 28 Caps",
     categoryId: "arthritis-care",
     tagline: "28 Capsules",
     description:
       "Artho Z Capsule provides comprehensive joint support with a synergistic blend of herbs that reduce inflammation, nourish cartilage and improve overall joint health and flexibility.",
     price: 340,
-    mrp: 410,
+    mrp: 399,
     rating: 4.6,
     reviewCount: 174,
     image: { uri: "https://shatakshiherbal.com/product-images/product-9_new.webp" },
   },
   {
-    id: "cartilage-capsules",
+    id: "cartilage-tablets",
     name: "Cartilage Capsules 10 Caps",
     categoryId: "arthritis-care",
     tagline: "10 Capsules",
@@ -323,7 +324,7 @@ export const products: Product[] = [
     image: { uri: "https://shatakshiherbal.com/product-images/product-35.webp" },
   },
   {
-    id: "dr-sona-artho-capsule",
+    id: "dr-sona-artho-tablets",
     name: "Dr. Sona Artho Capsule 28 Caps",
     categoryId: "arthritis-care",
     tagline: "28 Capsules",
@@ -336,7 +337,7 @@ export const products: Product[] = [
     image: { uri: "https://shatakshiherbal.com/product-images/product-14_new.webp" },
   },
   {
-    id: "arthovit-m-tablets",
+    id: "arthovit-m",
     name: "Arthovit M Tablets 28 Tabs",
     categoryId: "arthritis-care",
     tagline: "28 Tablets",
@@ -356,14 +357,14 @@ export const products: Product[] = [
     description:
       "Vat Nashak Capsules are a targeted Ayurvedic formula to pacify Vata dosha, offering relief from nerve pain, joint stiffness and overall musculoskeletal discomfort.",
     price: 340,
-    mrp: 410,
+    mrp: 399,
     rating: 4.6,
     reviewCount: 198,
     badge: "New",
     image: { uri: "https://shatakshiherbal.com/product-images/product-28_new.webp" },
   },
 
-  // ── Liver & Kidney Care ───────────────────────────────────────────────────
+  // ── Liver & Kidney Care (4) ───────────────────────────────────────────────
   {
     id: "kft-xl-2",
     name: "KFT XL 2 10Caps",
@@ -419,7 +420,7 @@ export const products: Product[] = [
     image: { uri: "https://i.ibb.co/1G9Mm6VH/45c879a48c34.png" },
   },
 
-  // ── Asthma & Allergy Care ─────────────────────────────────────────────────
+  // ── Asthma & Allergy Care (4) ─────────────────────────────────────────────
   {
     id: "aarogya-jeevan",
     name: "Aarogya Jeevan 50gm",
@@ -428,7 +429,7 @@ export const products: Product[] = [
     description:
       "Aarogya Jeevan is a time-tested herbal powder with tulsi, mulethi and vasaka that strengthens respiratory immunity, eases breathing discomfort and supports overall lung health.",
     price: 249,
-    mrp: 300,
+    mrp: 299,
     rating: 4.8,
     reviewCount: 521,
     badge: "Bestseller",
@@ -442,19 +443,19 @@ export const products: Product[] = [
     description:
       "Asthometic Capsule is a comprehensive respiratory formula combining vasaka, haridra and mulethi to reduce bronchial inflammation, ease asthmatic episodes and improve breathing capacity.",
     price: 420,
-    mrp: 510,
+    mrp: 499,
     rating: 4.8,
     reviewCount: 456,
     badge: "Bestseller",
     image: { uri: "https://shatakshiherbal.com/product-images/product-11_new.webp" },
   },
   {
-    id: "alcbmaniras",
+    id: "alc-maniras-tablets",
     name: "AlcbManiras 14gm",
     categoryId: "asthma-allergy-care",
     tagline: "14gm Herbal Preparation",
     description:
-      "AlcbManiras is a concentrated Ayurvedic preparation formulated to reduce allergic sensitivity and support the immune system in managing chronic respiratory and skin allergies.",
+      "Alc Maniras provides natural relief from cough and cold, a concentrated Ayurvedic preparation formulated to reduce allergic sensitivity and support the immune system in managing chronic respiratory allergies.",
     price: 1000,
     mrp: 1200,
     rating: 4.6,
@@ -476,7 +477,7 @@ export const products: Product[] = [
     image: { uri: "https://i.ibb.co/FktNj221/011f35084c0b.png" },
   },
 
-  // ── Skin, Psoriasis & Charm Rog Care ──────────────────────────────────────
+  // ── Skin, Psoriasis & Charm Rog Care (6) ─────────────────────────────────
   {
     id: "charma-r-capsule",
     name: "Charma R Capsule 14 Caps",
@@ -525,10 +526,10 @@ export const products: Product[] = [
     description:
       "Glow Up Capsules nourish skin from within with a potent blend of saffron, manjistha and vitamin C-rich amla, promoting a radiant, even-toned complexion and youthful glow.",
     price: 499,
-    mrp: 600,
+    mrp: 599,
     rating: 4.8,
     reviewCount: 367,
-    image: { uri: "https://shatakshiherbal.com/product-images/product-20_new.webp" },
+    image: { uri: "https://shatakshiherbal.com/product-images/product-18_new.webp" },
   },
   {
     id: "derma-cream",
@@ -558,7 +559,7 @@ export const products: Product[] = [
     image: { uri: "https://i.ibb.co/PGk3yyvq/2f05fcd6622b.png" },
   },
 
-  // ── Piles Care ────────────────────────────────────────────────────────────
+  // ── Piles Care (2) ────────────────────────────────────────────────────────
   {
     id: "arsho-f-powder",
     name: "Arsho F Powder 50gm",
@@ -572,17 +573,31 @@ export const products: Product[] = [
     reviewCount: 156,
     image: { uri: "https://shatakshiherbal.com/product-images/product-4_new.webp" },
   },
-
-  // ── Acidity & Digestive Care ──────────────────────────────────────────────
   {
-    id: "multicomplex",
+    // Arthovit M also appears in Piles Care on the website
+    id: "arthovit-m-piles",
+    name: "Arthovit M Tablets 28 Tabs",
+    categoryId: "piles-care",
+    tagline: "28 Tablets",
+    description:
+      "Arthovit M Tablets combine essential micronutrients with herbal ingredients to support healthy digestion and provide relief from piles-related inflammation and discomfort.",
+    price: 429,
+    mrp: 520,
+    rating: 4.7,
+    reviewCount: 221,
+    image: { uri: "https://shatakshiherbal.com/product-images/product-10_new.webp" },
+  },
+
+  // ── Acidity & Digestive Care (6) ─────────────────────────────────────────
+  {
+    id: "multivitamin-complex",
     name: "Multicomplex 14 Caps",
     categoryId: "acidity-care",
     tagline: "14 Capsules",
     description:
       "Multicomplex is a comprehensive digestive wellness capsule combining essential vitamins, minerals and herbal digestive enzymes to support gut health and reduce acidity.",
     price: 249,
-    mrp: 300,
+    mrp: 299,
     rating: 4.7,
     reviewCount: 245,
     badge: "Bestseller",
@@ -596,7 +611,7 @@ export const products: Product[] = [
     description:
       "Safa Amrit Capsules are a gentle yet effective digestive cleanser with triphala and isabgol that promote regular bowel movements, reduce bloating and support a healthy gut ecosystem.",
     price: 249,
-    mrp: 300,
+    mrp: 299,
     rating: 4.7,
     reviewCount: 234,
     image: { uri: "https://shatakshiherbal.com/product-images/product-24_new.webp" },
@@ -607,9 +622,9 @@ export const products: Product[] = [
     categoryId: "acidity-care",
     tagline: "50gm Powder",
     description:
-      "Power Booster Powder is an energy and digestive support formula made with amla, ashwagandha and shatavari to boost strength, improve digestion and enhance overall vitality.",
+      "Power Booster Powder cleanses the liver and improves digestive health, combining amla, ashwagandha and shatavari to boost strength, improve digestion and enhance overall vitality.",
     price: 340,
-    mrp: 410,
+    mrp: 399,
     rating: 4.6,
     reviewCount: 212,
     badge: "New",
@@ -629,10 +644,38 @@ export const products: Product[] = [
     badge: "Bestseller",
     image: { uri: "https://i.ibb.co/tgDRtdn/97762c70fad2.png" },
   },
-
-  // ── Wellness & Weakness Care ──────────────────────────────────────────────
   {
-    id: "cnz-capsule",
+    id: "gasotouch-capsules",
+    name: "GasoTouch Capsules",
+    categoryId: "acidity-care",
+    tagline: "Herbal Capsules",
+    description:
+      "GasoTouch Capsules are a targeted herbal formula that provides quick relief from gas, bloating and indigestion, supporting a calm and comfortable digestive system throughout the day.",
+    price: 240,
+    mrp: 290,
+    rating: 4.6,
+    reviewCount: 178,
+    image: { uri: "https://shatakshiherbal.com/product-images/product-48.webp" },
+  },
+  {
+    // Liver Maniras also appears in Acidity Care on the website
+    id: "liver-maniras-acidity",
+    name: "Liver Maniras 28gm",
+    categoryId: "acidity-care",
+    tagline: "28gm Herbal Preparation",
+    description:
+      "Liver Maniras supports liver-driven digestive wellness. This concentrated Ayurvedic preparation helps the liver produce adequate bile, improving fat digestion and reducing acidity.",
+    price: 1000,
+    mrp: 1200,
+    rating: 4.6,
+    reviewCount: 234,
+    badge: "New",
+    image: { uri: "https://i.ibb.co/1G9Mm6VH/45c879a48c34.png" },
+  },
+
+  // ── Wellness & Weakness Care (6) ──────────────────────────────────────────
+  {
+    id: "c-n-z-capsule",
     name: "C.N.Z Capsule 28 Caps",
     categoryId: "wellness-care",
     tagline: "28 Capsules",
@@ -659,14 +702,14 @@ export const products: Product[] = [
     image: { uri: "https://shatakshiherbal.com/product-images/product-16_new.webp" },
   },
   {
-    id: "multishine-capsules",
+    id: "multi-shine-herbal-capsules",
     name: "Multishine Capsules 14 Caps",
     categoryId: "wellness-care",
     tagline: "14 Capsules",
     description:
-      "Multishine Capsules are a daily wellness supplement combining essential vitamins and herbal adaptogens to enhance energy, immunity and overall physical and mental wellbeing.",
+      "Multi Shine Herbal Capsules provide natural glow and overall wellness, combining essential vitamins and herbal adaptogens to enhance energy, immunity and physical wellbeing.",
     price: 249,
-    mrp: 300,
+    mrp: 299,
     rating: 4.6,
     reviewCount: 198,
     image: { uri: "https://shatakshiherbal.com/product-images/product-19_new.webp" },
@@ -679,13 +722,43 @@ export const products: Product[] = [
     description:
       "Multivitamin Capsules provide a complete spectrum of essential vitamins and minerals to bridge daily nutritional gaps, support immune function and maintain peak energy levels.",
     price: 340,
-    mrp: 410,
+    mrp: 399,
     rating: 4.6,
     reviewCount: 178,
     image: { uri: "https://shatakshiherbal.com/product-images/product-50.webp" },
   },
+  {
+    // Multicomplex also appears in Wellness Care on the website
+    id: "multivitamin-complex-wellness",
+    name: "Multicomplex 14 Caps",
+    categoryId: "wellness-care",
+    tagline: "14 Capsules",
+    description:
+      "Multicomplex brings together vitamins, minerals and herbal enzymes to fill nutritional gaps, restore energy levels and support overall strength and daily wellness.",
+    price: 249,
+    mrp: 299,
+    rating: 4.7,
+    reviewCount: 245,
+    badge: "Bestseller",
+    image: { uri: "https://shatakshiherbal.com/product-images/product-17_new.webp" },
+  },
+  {
+    // Power Booster also appears in Wellness Care on the website
+    id: "power-booster-wellness",
+    name: "Power Booster Powder 50gm",
+    categoryId: "wellness-care",
+    tagline: "50gm Powder",
+    description:
+      "Power Booster Powder supports strength and vitality with a blend of amla, ashwagandha and shatavari — ideal for those recovering from weakness or looking to build daily stamina.",
+    price: 340,
+    mrp: 399,
+    rating: 4.6,
+    reviewCount: 212,
+    badge: "New",
+    image: { uri: "https://shatakshiherbal.com/product-images/product-21_new.webp" },
+  },
 
-  // ── Vital, Vitiligo & Sex Power ───────────────────────────────────────────
+  // ── Vital, Vitiligo & Sex Power (3) ──────────────────────────────────────
   {
     id: "rx-gold-capsules",
     name: "RX Gold Capsules 14 Caps",
@@ -713,8 +786,21 @@ export const products: Product[] = [
     badge: "Bestseller",
     image: { uri: "https://i.ibb.co/cX7dcR2G/c8bea0cb3232.png" },
   },
+  {
+    id: "feminamaniras-powder",
+    name: "Femina Maniras Powder",
+    categoryId: "vital-care",
+    tagline: "Herbal Powder",
+    description:
+      "Femina Maniras Powder is a specialised herbal powder formulated to support women's vitality and skin health, combining traditional Ayurvedic ingredients known to enhance radiance and hormonal balance.",
+    price: 1000,
+    mrp: 1200,
+    rating: 4.6,
+    reviewCount: 189,
+    image: { uri: "https://shatakshiherbal.com/product-images/product-53.webp" },
+  },
 
-  // ── Stree Rog Care ────────────────────────────────────────────────────────
+  // ── Stree Rog Care (3) ────────────────────────────────────────────────────
   {
     id: "sakhi-sundari",
     name: "Sakhi Sundari 28 Tabs",
@@ -722,12 +808,12 @@ export const products: Product[] = [
     tagline: "28 Tablets",
     description:
       "Sakhi Sundari offers natural beauty and wellness support for women, combining shatavari, ashoka and lodhra to balance hormones, enhance skin radiance and boost everyday vitality.",
-    price: 340,
-    mrp: 410,
+    price: 249,
+    mrp: 299,
     rating: 4.6,
     reviewCount: 145,
     badge: "New",
-    image: { uri: "https://shatakshiherbal.com/assets/product-53-B_J58su8.webp" },
+    image: { uri: "https://shatakshiherbal.com/product-images/product-25_new.webp" },
   },
   {
     id: "shat-prabha-tab",
@@ -735,7 +821,7 @@ export const products: Product[] = [
     categoryId: "stree-care",
     tagline: "Herbal Tablets",
     description:
-      "Shat Prabha Tab is rich in Vitamin C and powerful herbal extracts that boost immunity, strengthen hair roots and support women's overall health and radiance.",
+      "Shat Prabha Tab is rich in Vitamin C and powerful herbal extracts that boost immunity, strengthen hair roots and support women's overall health and natural radiance.",
     price: 799,
     mrp: 960,
     rating: 4.8,
@@ -753,7 +839,7 @@ export const products: Product[] = [
     mrp: 1200,
     rating: 4.6,
     reviewCount: 189,
-    image: { uri: "https://shatakshiherbal.com/assets/product-53-B_J58su8.webp" },
+    image: { uri: "https://shatakshiherbal.com/product-images/product-53.webp" },
   },
 ];
 

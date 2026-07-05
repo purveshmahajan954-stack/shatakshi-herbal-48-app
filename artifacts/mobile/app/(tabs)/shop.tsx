@@ -38,14 +38,20 @@ export default function ShopScreen() {
     });
   }, [activeCategory, query]);
 
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: colors.background,
-        paddingTop: isWeb ? 67 : insets.top,
-      }}
-    >
+  // Pair products into rows of 2 for the main FlatList
+  const rows = useMemo(() => {
+    const result: (typeof products)[] = [];
+    for (let i = 0; i < filtered.length; i += 2) {
+      result.push(filtered.slice(i, i + 2));
+    }
+    return result;
+  }, [filtered]);
+
+  const chipData = [{ id: null, shortName: "All" }, ...categories];
+
+  const ListHeader = (
+    <View>
+      {/* Title + Search */}
       <View style={styles.header}>
         <Text style={[styles.title, { color: colors.foreground }]}>Shop</Text>
         <View
@@ -71,12 +77,14 @@ export default function ShopScreen() {
         </View>
       </View>
 
+      {/* Category chips — horizontal scroll inside a fixed-height wrapper */}
       <FlatList
-        data={[{ id: null, shortName: "All" }, ...categories]}
+        data={chipData}
         horizontal
         keyExtractor={(item) => String(item.id)}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.chipRow}
+        style={styles.chipList}
         renderItem={({ item }) => {
           const active = activeCategory === item.id;
           return (
@@ -107,33 +115,46 @@ export default function ShopScreen() {
           );
         }}
       />
-
-      <FlatList
-        data={filtered}
-        keyExtractor={(item) => item.id}
-        numColumns={2}
-        columnWrapperStyle={styles.row}
-        contentContainerStyle={styles.list}
-        scrollEnabled={filtered.length > 0}
-        ListEmptyComponent={
-          <View style={styles.empty}>
-            <Feather name="search" size={32} color={colors.mutedForeground} />
-            <Text style={[styles.emptyText, { color: colors.mutedForeground }]}>
-              No products found
-            </Text>
-          </View>
-        }
-        renderItem={({ item }) => (
-          <View style={styles.gridItem}>
-            <ProductCard product={item} />
-          </View>
-        )}
-      />
     </View>
+  );
+
+  return (
+    <FlatList
+      style={{ flex: 1, backgroundColor: colors.background }}
+      contentContainerStyle={[
+        styles.list,
+        { paddingTop: isWeb ? 67 : insets.top },
+      ]}
+      data={rows}
+      keyExtractor={(_, i) => String(i)}
+      ListHeaderComponent={ListHeader}
+      ListEmptyComponent={
+        <View style={styles.empty}>
+          <Feather name="search" size={32} color={colors.mutedForeground} />
+          <Text style={[styles.emptyText, { color: colors.mutedForeground }]}>
+            No products found
+          </Text>
+        </View>
+      }
+      renderItem={({ item: row }) => (
+        <View style={styles.row}>
+          {row.map((product) => (
+            <View key={product.id} style={styles.gridItem}>
+              <ProductCard product={product} />
+            </View>
+          ))}
+          {/* Fill empty slot when odd number of items in last row */}
+          {row.length === 1 ? <View style={styles.gridItem} /> : null}
+        </View>
+      )}
+    />
   );
 }
 
 const styles = StyleSheet.create({
+  list: {
+    paddingBottom: 100,
+  },
   header: {
     paddingHorizontal: 20,
     paddingTop: 12,
@@ -157,6 +178,9 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 14,
   },
+  chipList: {
+    flexGrow: 0,
+  },
   chipRow: {
     paddingHorizontal: 20,
     gap: 8,
@@ -172,20 +196,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "600",
   },
-  list: {
-    paddingHorizontal: 20,
-    paddingBottom: 100,
-    flexGrow: 1,
-  },
   row: {
+    flexDirection: "row",
     gap: 12,
+    paddingHorizontal: 20,
+    marginBottom: 12,
   },
   gridItem: {
     flex: 1,
-    marginBottom: 12,
   },
   empty: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 80,

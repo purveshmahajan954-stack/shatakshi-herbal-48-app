@@ -25,7 +25,6 @@ import { useCart } from "@/contexts/CartContext";
 import { useColors } from "@/hooks/useColors";
 
 const BRAND_GREEN = "#07502C";
-const BRAND_GREEN_DARK = "#054023";
 
 export default function HomeScreen() {
   const colors = useColors();
@@ -40,7 +39,7 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       {/* ── Amazon-style Header ── */}
-      <View style={[styles.headerWrap, { paddingTop: topInset, backgroundColor: BRAND_GREEN }]}>
+      <View style={[styles.headerWrap, { paddingTop: topInset, backgroundColor: "#FFFFFF" }]}>
 
         {/* Row 1: Logo + Icons */}
         <View style={styles.headerRow1}>
@@ -56,7 +55,7 @@ export default function HomeScreen() {
           {/* Right icons */}
           <View style={styles.actions}>
             <Pressable style={styles.iconBtn} hitSlop={8} testID="header-wishlist">
-              <Feather name="heart" size={22} color="#FFFFFF" />
+              <Feather name="heart" size={22} color={BRAND_GREEN} />
             </Pressable>
 
             <Pressable
@@ -65,7 +64,7 @@ export default function HomeScreen() {
               hitSlop={8}
               testID="header-cart"
             >
-              <Feather name="shopping-bag" size={22} color="#FFFFFF" />
+              <Feather name="shopping-bag" size={22} color={BRAND_GREEN} />
               {totalItems > 0 && (
                 <View style={styles.badge}>
                   <Text style={styles.badgeText}>
@@ -76,7 +75,7 @@ export default function HomeScreen() {
             </Pressable>
 
             <Pressable style={styles.iconBtn} hitSlop={8} testID="header-menu">
-              <Feather name="menu" size={22} color="#FFFFFF" />
+              <Feather name="menu" size={22} color={BRAND_GREEN} />
             </Pressable>
           </View>
         </View>
@@ -251,14 +250,14 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     letterSpacing: 1.4,
     lineHeight: 14,
-    color: "#FFFFFF",
+    color: "#07502C",
   },
   logoBottom: {
     fontSize: 12,
     fontWeight: "800",
     letterSpacing: 1.4,
     lineHeight: 14,
-    color: "#EFA831",
+    color: "#07502C",
   },
   actions: {
     flexDirection: "row",

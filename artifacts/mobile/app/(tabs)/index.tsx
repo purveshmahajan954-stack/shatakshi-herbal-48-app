@@ -44,13 +44,11 @@ export default function HomeScreen() {
         {/* Row 1: Logo + Icons */}
         <View style={styles.headerRow1}>
           {/* Logo */}
-          <View style={styles.logoWrap}>
-            <Text style={styles.leafEmoji}>🌿</Text>
-            <View>
-              <Text style={styles.logoTop}>SHATAKSHI</Text>
-              <Text style={styles.logoBottom}>HERBAL</Text>
-            </View>
-          </View>
+          <Image
+            source={require("../../assets/images/logo.png")}
+            style={styles.logoImage}
+            contentFit="contain"
+          />
 
           {/* Right icons */}
           <View style={styles.actions}>
@@ -237,27 +235,9 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 8,
   },
-  logoWrap: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 7,
-  },
-  leafEmoji: {
-    fontSize: 28,
-  },
-  logoTop: {
-    fontSize: 12,
-    fontWeight: "800",
-    letterSpacing: 1.4,
-    lineHeight: 14,
-    color: "#07502C",
-  },
-  logoBottom: {
-    fontSize: 12,
-    fontWeight: "800",
-    letterSpacing: 1.4,
-    lineHeight: 14,
-    color: "#07502C",
+  logoImage: {
+    width: 120,
+    height: 44,
   },
   actions: {
     flexDirection: "row",

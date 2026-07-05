@@ -1,46 +1,16 @@
+// Android & web tab layout — no iOS-only imports here.
+// iOS uses _layout.ios.tsx which handles NativeTabs / Liquid Glass / SF Symbols.
 import { BlurView } from "expo-blur";
-import { isLiquidGlassAvailable } from "expo-glass-effect";
 import { Tabs } from "expo-router";
-import { Icon, Label, NativeTabs, Badge } from "expo-router/unstable-native-tabs";
-import { SymbolView } from "expo-symbols";
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import { Platform, StyleSheet, View, useColorScheme } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 
 import { useColors } from "@/hooks/useColors";
 import { useCart } from "@/contexts/CartContext";
 
-function NativeTabLayout() {
-  const { totalItems } = useCart();
-
-  return (
-    <NativeTabs>
-      <NativeTabs.Trigger name="index">
-        <Icon sf={{ default: "house", selected: "house.fill" }} />
-        <Label>Home</Label>
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="shop">
-        <Icon sf={{ default: "leaf", selected: "leaf.fill" }} />
-        <Label>Shop</Label>
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="cart">
-        <Icon sf={{ default: "bag", selected: "bag.fill" }} />
-        <Label>Cart</Label>
-        {totalItems > 0 ? <Badge>{String(totalItems)}</Badge> : null}
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="contact">
-        <Icon sf={{ default: "phone", selected: "phone.fill" }} />
-        <Label>Contact</Label>
-      </NativeTabs.Trigger>
-    </NativeTabs>
-  );
-}
-
-function ClassicTabLayout() {
+export default function TabLayout() {
   const colors = useColors();
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const isIOS = Platform.OS === "ios";
   const isWeb = Platform.OS === "web";
   const { totalItems } = useCart();
 
@@ -51,52 +21,40 @@ function ClassicTabLayout() {
         tabBarInactiveTintColor: colors.mutedForeground,
         headerShown: false,
         tabBarStyle: {
-          position: "absolute",
-          backgroundColor: isIOS ? "transparent" : colors.background,
+          backgroundColor: colors.background,
           borderTopWidth: isWeb ? 1 : 0,
           borderTopColor: colors.border,
           elevation: 0,
           ...(isWeb ? { height: 84 } : {}),
         },
-        tabBarBackground: () =>
-          isIOS ? (
-            <BlurView
-              intensity={100}
-              tint={isDark ? "dark" : "light"}
-              style={StyleSheet.absoluteFill}
-            />
-          ) : isWeb ? (
-            <View
-              style={[
-                StyleSheet.absoluteFill,
-                { backgroundColor: colors.background },
-              ]}
-            />
-          ) : null,
+        tabBarBackground: isWeb
+          ? () => (
+              <View
+                style={[
+                  StyleSheet.absoluteFill,
+                  { backgroundColor: colors.background },
+                ]}
+              />
+            )
+          : undefined,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
-          tabBarIcon: ({ color }) =>
-            isIOS ? (
-              <SymbolView name="house" tintColor={color} size={24} />
-            ) : (
-              <Feather name="home" size={22} color={color} />
-            ),
+          tabBarIcon: ({ color }) => (
+            <Feather name="home" size={22} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="shop"
         options={{
           title: "Shop",
-          tabBarIcon: ({ color }) =>
-            isIOS ? (
-              <SymbolView name="leaf" tintColor={color} size={24} />
-            ) : (
-              <Feather name="grid" size={22} color={color} />
-            ),
+          tabBarIcon: ({ color }) => (
+            <Feather name="grid" size={22} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
@@ -104,33 +62,20 @@ function ClassicTabLayout() {
         options={{
           title: "Cart",
           tabBarBadge: totalItems > 0 ? totalItems : undefined,
-          tabBarIcon: ({ color }) =>
-            isIOS ? (
-              <SymbolView name="bag" tintColor={color} size={24} />
-            ) : (
-              <Feather name="shopping-bag" size={22} color={color} />
-            ),
+          tabBarIcon: ({ color }) => (
+            <Feather name="shopping-bag" size={22} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="contact"
         options={{
           title: "Contact",
-          tabBarIcon: ({ color }) =>
-            isIOS ? (
-              <SymbolView name="phone" tintColor={color} size={24} />
-            ) : (
-              <Feather name="phone" size={22} color={color} />
-            ),
+          tabBarIcon: ({ color }) => (
+            <Feather name="phone" size={22} color={color} />
+          ),
         }}
       />
     </Tabs>
   );
-}
-
-export default function TabLayout() {
-  if (isLiquidGlassAvailable()) {
-    return <NativeTabLayout />;
-  }
-  return <ClassicTabLayout />;
 }

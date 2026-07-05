@@ -9,6 +9,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -23,7 +24,8 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import { useColors } from "@/hooks/useColors";
 
-const HEADER_HEIGHT = 56;
+const BRAND_GREEN = "#07502C";
+const BRAND_GREEN_DARK = "#054023";
 
 export default function HomeScreen() {
   const colors = useColors();
@@ -34,85 +36,63 @@ export default function HomeScreen() {
   const { totalItems } = useCart();
 
   const topInset = isWeb ? 0 : insets.top;
-  const headerTotal = topInset + HEADER_HEIGHT;
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
-      {/* ── Fixed Header ── */}
-      <View
-        style={[
-          styles.header,
-          {
-            paddingTop: topInset,
-            height: headerTotal,
-            backgroundColor: colors.background,
-            borderBottomColor: colors.border,
-          },
-        ]}
-      >
-        {/* Logo */}
-        <View style={styles.logoWrap}>
-          <View style={styles.logoLeaf}>
+      {/* ── Amazon-style Header ── */}
+      <View style={[styles.headerWrap, { paddingTop: topInset, backgroundColor: BRAND_GREEN }]}>
+
+        {/* Row 1: Logo + Icons */}
+        <View style={styles.headerRow1}>
+          {/* Logo */}
+          <View style={styles.logoWrap}>
             <Text style={styles.leafEmoji}>🌿</Text>
+            <View>
+              <Text style={styles.logoTop}>SHATAKSHI</Text>
+              <Text style={styles.logoBottom}>HERBAL</Text>
+            </View>
           </View>
-          <View>
-            <Text style={[styles.logoTop, { color: colors.primary }]}>
-              SHATAKSHI
-            </Text>
-            <Text style={[styles.logoBottom, { color: colors.primary }]}>
-              HERBAL
-            </Text>
+
+          {/* Right icons */}
+          <View style={styles.actions}>
+            <Pressable style={styles.iconBtn} hitSlop={8} testID="header-wishlist">
+              <Feather name="heart" size={22} color="#FFFFFF" />
+            </Pressable>
+
+            <Pressable
+              onPress={() => router.push("/cart")}
+              style={styles.iconBtn}
+              hitSlop={8}
+              testID="header-cart"
+            >
+              <Feather name="shopping-bag" size={22} color="#FFFFFF" />
+              {totalItems > 0 && (
+                <View style={styles.badge}>
+                  <Text style={styles.badgeText}>
+                    {totalItems > 9 ? "9+" : String(totalItems)}
+                  </Text>
+                </View>
+              )}
+            </Pressable>
+
+            <Pressable style={styles.iconBtn} hitSlop={8} testID="header-menu">
+              <Feather name="menu" size={22} color="#FFFFFF" />
+            </Pressable>
           </View>
         </View>
 
-        {/* Action icons */}
-        <View style={styles.actions}>
-          <Pressable
-            onPress={() => router.push("/shop")}
-            style={styles.iconBtn}
-            hitSlop={8}
-            testID="header-search"
-          >
-            <Feather name="search" size={22} color={colors.foreground} />
-          </Pressable>
-
-          <Pressable
-            style={styles.iconBtn}
-            hitSlop={8}
-            testID="header-wishlist"
-          >
-            <Feather name="heart" size={22} color={colors.foreground} />
-          </Pressable>
-
-          <Pressable
-            onPress={() => router.push("/cart")}
-            style={styles.iconBtn}
-            hitSlop={8}
-            testID="header-cart"
-          >
-            <Feather name="shopping-bag" size={22} color={colors.foreground} />
-            {totalItems > 0 && (
-              <View
-                style={[
-                  styles.badge,
-                  { backgroundColor: colors.primary },
-                ]}
-              >
-                <Text style={styles.badgeText}>
-                  {totalItems > 9 ? "9+" : String(totalItems)}
-                </Text>
-              </View>
-            )}
-          </Pressable>
-
-          <Pressable
-            style={styles.iconBtn}
-            hitSlop={8}
-            testID="header-menu"
-          >
-            <Feather name="menu" size={22} color={colors.foreground} />
-          </Pressable>
-        </View>
+        {/* Row 2: Full-width Search Bar */}
+        <TouchableOpacity
+          activeOpacity={0.85}
+          onPress={() => router.push("/shop")}
+          style={styles.searchBar}
+          testID="header-search"
+        >
+          <Feather name="search" size={18} color="#6B7568" />
+          <Text style={styles.searchPlaceholder}>Search herbal products...</Text>
+          <View style={styles.searchDivider} />
+          <Feather name="mic" size={16} color="#6B7568" />
+        </TouchableOpacity>
       </View>
 
       {/* ── Scrollable content ── */}
@@ -244,51 +224,50 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  // ── Header ──────────────────────────────────────────────────────────────
-  header: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingBottom: 10,
-    borderBottomWidth: StyleSheet.hairlineWidth,
+  // ── Amazon-style Header ───────────────────────────────────────────────────
+  headerWrap: {
+    width: "100%",
     zIndex: 10,
+    paddingBottom: 10,
+  },
+  headerRow1: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 14,
+    paddingTop: 10,
+    paddingBottom: 8,
   },
   logoWrap: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 6,
-  },
-  logoLeaf: {
-    width: 36,
-    height: 36,
-    borderRadius: 8,
-    alignItems: "center",
-    justifyContent: "center",
+    gap: 7,
   },
   leafEmoji: {
-    fontSize: 26,
+    fontSize: 28,
   },
   logoTop: {
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: "800",
-    letterSpacing: 1.2,
-    lineHeight: 13,
+    letterSpacing: 1.4,
+    lineHeight: 14,
+    color: "#FFFFFF",
   },
   logoBottom: {
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: "800",
-    letterSpacing: 1.2,
-    lineHeight: 13,
+    letterSpacing: 1.4,
+    lineHeight: 14,
+    color: "#EFA831",
   },
   actions: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
+    gap: 2,
   },
   iconBtn: {
-    width: 38,
-    height: 38,
+    width: 40,
+    height: 40,
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
@@ -296,18 +275,41 @@ const styles = StyleSheet.create({
   badge: {
     position: "absolute",
     top: 4,
-    right: 2,
-    minWidth: 16,
-    height: 16,
-    borderRadius: 8,
+    right: 3,
+    minWidth: 17,
+    height: 17,
+    borderRadius: 9,
+    backgroundColor: "#EFA831",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 3,
   },
   badgeText: {
-    color: "#FFFFFF",
+    color: "#3A2600",
     fontSize: 9,
-    fontWeight: "700",
+    fontWeight: "800",
+  },
+  // Search bar (row 2)
+  searchBar: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 12,
+    marginTop: 2,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    gap: 8,
+  },
+  searchPlaceholder: {
+    flex: 1,
+    fontSize: 14,
+    color: "#6B7568",
+  },
+  searchDivider: {
+    width: 1,
+    height: 16,
+    backgroundColor: "#E7E1D3",
   },
 
   // ── Hero ─────────────────────────────────────────────────────────────────
